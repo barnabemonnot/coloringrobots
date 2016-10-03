@@ -1,4 +1,4 @@
-var Robot = require("./robot");
+var Robot = require("./robotLogit");
 var _ = require("underscore");
 
 var nodeNumber = 6;
@@ -54,4 +54,8 @@ for (var i = 0; i < 1000; i++) {
     }
     console.log("player " + robot.player + " moved to color " + move);
     console.log("graph is now", nodes);
+    if (collisionsInGraph() == 0) {
+        console.log("finished!");
+        break;
+    }
 }
