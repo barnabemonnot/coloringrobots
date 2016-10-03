@@ -1,39 +1,21 @@
 var _ = require("underscore");
 
-var ColoringBR = function(obj) {
+var RobotBR = function(obj) {
     this._neighbors = obj.neighbors;
     this._colorsAllowed = obj.colorsAllowed;
     this._epsilon = (obj.epsilon ? obj.epsilon : 0);
 }
 
-ColoringBR.prototype.updateState = function(obj) {
-    this._neighbors.find(function(d) { return d.nid == obj.nid; }).color = obj.color;
+RobotBR.prototype.updateState = function(obj) {
+    // To complete, obj = { nid: 1, color: 0 }
 }
 
-ColoringBR.prototype.move = function() {
+RobotBR.prototype.move = function() {
     var self = this;
 
-    // Error BR
-    var error = (Math.random() < self._epsilon ? true : false);
-    if (error) {
-        return Math.floor(Math.random() * (self._colorsAllowed - 1));
-    }
-
-    var colorCount = _.range(self._colorsAllowed).map(function(color) {
-        return {
-            color: color,
-            count: self._neighbors.filter(function(neighbor) {
-                return neighbor.color == color;
-            }).length
-        };
-    });
-    var min = _.min(colorCount, function(d) { return d.count; });
-    console.log(min);
-    var argmin = colorCount.filter(function(d) {
-        return d.count == min.count;
-    });
-    var move = argmin[Math.floor(Math.random() * argmin.length)].color;
-    return move;
+    // To complete
+    // First, without epsilon for the random move
+    // Then add epsilon error
 }
 
-module.exports = ColoringBR;
+module.exports = RobotBR;
